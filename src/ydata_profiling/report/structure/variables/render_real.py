@@ -188,39 +188,46 @@ def render_real(config: Settings, summary: dict) -> dict:
         [
             {
                 "name": "Standard deviation",
-                "value": fmt_numeric(summary["std"], precision=config.report.precision),
+                "value": "N/A" if summary["std"] is None else fmt_numeric(
+                    summary["std"], precision=config.report.precision
+                ),
             },
             {
                 "name": "Coefficient of variation (CV)",
-                "value": fmt_numeric(summary["cv"], precision=config.report.precision),
+                "value": "N/A" if summary["cv"] is None else fmt_numeric(
+                    summary["cv"], precision=config.report.precision
+                ),
             },
             {
                 "name": "Kurtosis",
                 "value": "N/A" if summary["kurtosis"] is None else fmt_numeric(
                     summary["kurtosis"], precision=config.report.precision
                 ),
-                
             },
             {
                 "name": "Mean",
-                "value": fmt_numeric(
+                "value": "N/A" if summary["mean"] is None else fmt_numeric(
                     summary["mean"], precision=config.report.precision
                 ),
             },
             {
                 "name": "Median Absolute Deviation (MAD)",
-                "value": fmt_numeric(summary["mad"], precision=config.report.precision),
+                "value": "N/A" if summary["mad"] is None else fmt_numeric(
+                    summary["mad"], precision=config.report.precision
+                ),
             },
             {
                 "name": "Skewness",
-                "value": fmt_numeric(
+                "value": "N/A" if summary["skewness"] is None else fmt_numeric(
                     summary["skewness"], precision=config.report.precision
                 ),
                 "class": "alert" if "skewness" in summary["alert_fields"] else "",
             },
             {
                 "name": "Sum",
-                "value": fmt_numeric(summary["sum"], precision=config.report.precision),
+                "value": "N/A" if summary["sum"] is None else fmt_numeric(
+                    summary["sum"], precision=config.report.precision
+                ),
             },
             {
                 "name": "Variance",
@@ -230,7 +237,9 @@ def render_real(config: Settings, summary: dict) -> dict:
             },
             {
                 "name": "Monotonicity",
-                "value": fmt_monotonic(summary["monotonic"]),
+                "value": "N/A" if summary["monotonic"] is None else fmt_monotonic(
+                    summary["monotonic"]
+                ),
             },
         ],
         name="Descriptive statistics",
