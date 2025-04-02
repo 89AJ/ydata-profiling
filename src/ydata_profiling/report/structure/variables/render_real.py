@@ -196,9 +196,10 @@ def render_real(config: Settings, summary: dict) -> dict:
             },
             {
                 "name": "Kurtosis",
-                "value": fmt_numeric(
+                "value": "N/A" if summary["kurtosis"] is None else fmt_numeric(
                     summary["kurtosis"], precision=config.report.precision
                 ),
+                
             },
             {
                 "name": "Mean",
