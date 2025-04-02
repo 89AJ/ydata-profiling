@@ -224,7 +224,7 @@ def render_real(config: Settings, summary: dict) -> dict:
             },
             {
                 "name": "Variance",
-                "value": fmt_numeric(
+                "value": "N/A" if summary["variance"] is None else fmt_numeric(
                     summary["variance"], precision=config.report.precision
                 ),
             },
